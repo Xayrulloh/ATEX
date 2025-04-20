@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "atex",
   "private": true,
   "scripts": {
     "build": "turbo run build",
