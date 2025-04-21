@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  product-api:
+    build:
+      context: ./apps/product-api
+    container_name: product-api
+    ports:
+      - '3000:3000'
+    depends_on:
+      - product-crud
+    environment:
+      NATS_URL: nats:4222
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/products
+    restart: unless-stopped
+
+  product-crud:
+    build:
+      context: ./apps/product-crud
+    container_name: product-crud
+    ports:
+      - '3001:3001'
+    depends_on:
+      - nats
+      - postgres
+      - redis
+    environment:
+      NATS_URL: nats:4222
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/products
+    restart: unless-stopped
+
+  telegram-bot:
+    build:
+      context: ./apps/telegram-bot
+    container_name: telegram-bot
+    ports:
+      - '3002:3002'
+    depends_on:
+      - product-crud
+      - product-api
+    restart: unless-stopped
+
+  nats:
+    image: nats
+    ports:
+      - '4222:4222'
+
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: products
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

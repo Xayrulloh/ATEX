@@ -1,0 +1,28 @@
+{
+  "name": "product-crud",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx tsx watch src/main.ts",
+    "build": "swc src -d dist",
+    "start": "node dist/src/main.js",
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:migrate": "drizzle-kit migrate",
+    "drizzle:push": "drizzle-kit push",
+    "drizzle:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "pg": "^8.14.1",
+    "drizzle-orm": "^0.42.0",
+    "fastify": "^5.3.2",
+    "ioredis": "^5.6.1",
+    "nats": "^2.29.3",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3"
+  }
+}
