@@ -5,7 +5,7 @@ import { handleProductCRUD } from "./routes/product";
 export const buildServer = async () => {
   const app = fastify();
 
-  const nats = await connect({ servers: "nats://localhost:4222" });
+  const nats = await connect({ servers: "nats://nats:4222" });
 
   handleProductCRUD(nats);
 

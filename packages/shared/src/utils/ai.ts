@@ -3,7 +3,6 @@ import axios from "axios";
 export async function generateDescription(
   productName: string,
 ): Promise<string> {
-  console.log("🚀 ~ generateDescription ~ productName:", productName);
   try {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
@@ -19,9 +18,9 @@ export async function generateDescription(
       },
       {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer YOUR_API_KEY`,
           "Content-Type": "application/json",
-          "X-Title": "ProductBot",
+          "X-Title": "ATEX",
         },
       },
     );

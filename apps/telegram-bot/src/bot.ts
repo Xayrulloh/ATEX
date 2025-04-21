@@ -4,15 +4,15 @@ import { getOne } from "./commands/get-one";
 import { create } from "./commands/create";
 import { update } from "./commands/update";
 import { remove } from "./commands/delete";
-import { validate } from "@repo/shared";
+import { validate } from "@repo/shared/utils/validate";
 import {
   CreateProductSchema,
   ProductParamsSchema,
-} from "@shared/src/schema/product";
-import { generateDescription } from "@shared/src/utils/ai";
+} from "@repo/shared/schema/product";
+import { generateDescription } from "@repo/shared/utils/ai";
 import { format } from "./helper/formatter";
 
-const bot = new Telegraf("5571399495:AAH4bkmt7B_0KQpX-Y_8S459LKZRg9frUvs");
+const bot = new Telegraf("YOUR_BOT_TOKEN");
 
 bot.start((ctx) => {
   ctx.reply(
@@ -23,8 +23,9 @@ bot.start((ctx) => {
 bot.command("products", async (ctx) => {
   const response = await getAll();
 
-  if (response.length === 0) {
+  if (!response.length) {
     ctx.reply("No products available.");
+
     return;
   }
 

@@ -1,4 +1,4 @@
-import { ProductType } from "@shared/src/schema/product";
+import { ProductType } from "@repo/shared/schema/product";
 import { client } from "../helper/axios";
 
 export async function update(id: string, name: string): Promise<ProductType> {

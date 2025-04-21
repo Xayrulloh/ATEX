@@ -8,6 +8,6 @@ RUN npm install -g pnpm && pnpm install
 
 RUN pnpm build
 
-RUN pnpm drizzle:push
+RUN pnpm --filter=product-crud drizzle:push
 
-CMD ["node", "dist/main.js"]
+CMD ["pnpm", "start", "--filter=product-crud"]

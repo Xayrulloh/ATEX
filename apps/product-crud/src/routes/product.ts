@@ -3,8 +3,8 @@ import { NatsConnection } from "nats";
 import {
   CreateProductSchema,
   ProductParamsSchema,
-} from "@shared/schema/product";
-import { validate } from "@shared/utils/validate";
+} from "@repo/shared/schema/product";
+import { validate } from "@repo/shared/utils/validate";
 import { productsSchema } from "../db/schema";
 import { eq } from "drizzle-orm";
 import { redis } from "../redis/client";

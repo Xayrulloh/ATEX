@@ -8,4 +8,4 @@ RUN npm install -g pnpm && pnpm install
 
 RUN pnpm build
 
-CMD ["node", "dist/main.js"]
+CMD ["pnpm", "start", "--filter=product-api"]

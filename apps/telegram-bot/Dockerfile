@@ -6,4 +6,6 @@ COPY . .
 
 RUN npm install -g pnpm && pnpm install
 
-RUN pnpm build && pnpm start
+RUN pnpm build
+
+CMD ["pnpm", "start", "--filter=telegram-bot"]

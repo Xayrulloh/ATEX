@@ -1,4 +1,4 @@
-import { ProductType } from "@shared/schema/product";
+import { ProductType } from "@repo/shared/schema/product";
 import { db } from "./drizzle";
 import { eq } from "drizzle-orm";
 import { productsSchema } from "./schema";

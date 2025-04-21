@@ -3,7 +3,7 @@ import { Pool } from "pg";
 import * as schema from "./schema";
 
 const pool = new Pool({
-  connectionString: "postgres://postgres:postgres@localhost:5432/products",
+  connectionString: "postgres://postgres:postgres@postgres:5432/products"
 });
 
 export const db = drizzle(pool, { schema });

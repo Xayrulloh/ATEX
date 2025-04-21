@@ -4,8 +4,8 @@ import {
   CreateProductSchema,
   ProductParamsSchema,
   ProductType,
-} from "@shared/schema/product";
-import { validate } from "@shared/utils/validate";
+} from "@repo/shared/schema/product";
+import { validate } from "@repo/shared/utils/validate";
 
 export default async function productRoutes(app: FastifyInstance) {
   app.get("/", async (req, reply): Promise<ProductType[]> => {
